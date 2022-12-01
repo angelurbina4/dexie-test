@@ -15,7 +15,7 @@ export function FriendList({ minAge, maxAge }) {
       const friends = await db.friends
         .where("age")
         .between(minAge, maxAge)
-        .toArray();
+        .sortBy("id");
 
       // Return the result
       return friends;
@@ -25,8 +25,20 @@ export function FriendList({ minAge, maxAge }) {
   );
 
   return <ul>
-    {friends?.map(friend => <li key={friend.id}>
+    {friends?.map(friend => 
+    <li key={friend.id}>
       {friend.name}, {friend.age}
+      <button
+        onClick={() =>
+          db.friends
+            .where({
+              id: friend.id
+            })
+            .modify((f) => ++f.age)
+        }
+      >
+        Birthday!
+      </button>
     </li>)}
   </ul>;
 }
