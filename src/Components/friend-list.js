@@ -30,7 +30,10 @@ export function FriendList({ minAge, maxAge }) {
   return (
     <div>
       <p>
-        Your friends are between {minAge} and {maxAge} years old and you have {friendCount} friends.
+        Only friends between the ages of {minAge} and {maxAge} will be shown.
+      </p>
+      <p>
+        You have {friendCount} friends total.
       </p>
       <ul>
         {friends?.map(friend => 
