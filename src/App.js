@@ -1,6 +1,7 @@
 import './App.css';
 import { AddFriendForm } from './Components/add-friend-form';
 import { FriendList } from './Components/friend-list';
+import ClearDataBaseButton from './Components/clear-data-base-button';
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
       <h2>Friends</h2>
       <FriendList minAge={15} maxAge={60} />
       <br />
-
+      <ClearDataBaseButton />
     </div>
   );
 }
