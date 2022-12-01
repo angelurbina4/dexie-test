@@ -24,21 +24,31 @@ export function FriendList({ minAge, maxAge }) {
     [minAge, maxAge]
   );
 
-  return <ul>
-    {friends?.map(friend => 
-    <li key={friend.id}>
-      {friend.name}, {friend.age}
-      <button
-        onClick={() =>
-          db.friends
-            .where({
-              id: friend.id
-            })
-            .modify((f) => ++f.age)
-        }
-      >
-        Birthday!
-      </button>
-    </li>)}
-  </ul>;
+  const friendCount = useLiveQuery(() => db.friends.count(), []);
+  if (!friendCount || friendCount === undefined) return null;
+
+  return (
+    <div>
+      <p>
+        Your friends are between {minAge} and {maxAge} years old and you have {friendCount} friends.
+      </p>
+      <ul>
+        {friends?.map(friend => 
+        <li key={friend.id}>
+          {friend.name}, {friend.age}
+          <button
+            onClick={() =>
+              db.friends
+                .where({
+                  id: friend.id
+                })
+                .modify((f) => ++f.age)
+            }
+          >
+            Birthday!
+          </button>
+        </li>)}
+      </ul>
+    </div>
+  );
 }

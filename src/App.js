@@ -11,7 +11,7 @@ const App = () => {
       <AddFriendForm defaultAge={21} />
       <br />
       <h2>Friends</h2>
-      <FriendList minAge={15} maxAge={50} />
+      <FriendList minAge={15} maxAge={60} />
       <br />
 
     </div>
