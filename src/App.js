@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import { AddFriendForm } from './Components/add-friend-form';
+import { FriendList } from './Components/friend-list';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Dexie test</h1>
+      <br />
+      <h2>Add Friends</h2>
+      <AddFriendForm defaultAge={21} />
+      <br />
+      <h2>Friends</h2>
+      <FriendList minAge={15} maxAge={50} />
+      <br />
+
     </div>
   );
 }
